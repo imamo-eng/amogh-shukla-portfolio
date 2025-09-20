@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/amogh-shukla-portfolio/static/css/main.19e468bf.css",
+    "main.js": "/amogh-shukla-portfolio/static/js/main.e1f21164.js",
+    "index.html": "/amogh-shukla-portfolio/index.html",
+    "main.19e468bf.css.map": "/amogh-shukla-portfolio/static/css/main.19e468bf.css.map",
+    "main.e1f21164.js.map": "/amogh-shukla-portfolio/static/js/main.e1f21164.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.19e468bf.css",
+    "static/js/main.e1f21164.js"
+  ]
+}
