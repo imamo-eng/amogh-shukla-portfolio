@@ -6,7 +6,7 @@ import Portfolio from "./components/Portfolio";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename="/amogh-shukla-portfolio">
         <Routes>
           <Route path="/" element={<Portfolio />} />
         </Routes>
