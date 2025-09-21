@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/amogh-shukla-portfolio/static/css/main.d3447022.css",
-    "main.js": "/amogh-shukla-portfolio/static/js/main.e1f21164.js",
+    "main.js": "/amogh-shukla-portfolio/static/js/main.d0322638.js",
     "index.html": "/amogh-shukla-portfolio/index.html",
     "main.d3447022.css.map": "/amogh-shukla-portfolio/static/css/main.d3447022.css.map",
-    "main.e1f21164.js.map": "/amogh-shukla-portfolio/static/js/main.e1f21164.js.map"
+    "main.d0322638.js.map": "/amogh-shukla-portfolio/static/js/main.d0322638.js.map"
   },
   "entrypoints": [
     "static/css/main.d3447022.css",
-    "static/js/main.e1f21164.js"
+    "static/js/main.d0322638.js"
   ]
 }
