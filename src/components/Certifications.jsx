@@ -1,80 +1,130 @@
-import React from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Badge } from './ui/badge';
-import { Award, ExternalLink, Calendar, CheckCircle } from 'lucide-react';
+import React from "react";
+import { Card, CardContent } from "./ui/card";
+import { Badge } from "./ui/badge";
+import { Award, Calendar, ExternalLink } from "lucide-react";
 
-const Certifications = ({ data }) => {
+const Certifications = ({ certifications }) => {
+  const handleCertificationClick = (cert) => {
+    // Mock functionality - will be enhanced in backend integration
+    alert(`Certificate details for: ${cert.name}\nIssuer: ${cert.issuer}\nYear: ${cert.year}`);
+  };
+
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-6">
+    <section className="py-20 bg-slate-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Licenses & Certifications</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+            Certifications & Learning
+          </h2>
           <div className="w-24 h-1 bg-blue-600 mx-auto mb-4"></div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Professional certifications demonstrating commitment to continuous learning and industry expertise
+          <p className="text-slate-600 max-w-2xl mx-auto">
+            Continuous learning and professional development through industry-recognized certifications
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {data.map((cert, index) => (
-            <Card key={cert.id} className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-              <CardHeader className="pb-4">
-                <div className="flex items-start justify-between mb-3">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
-                    <Award className="h-6 w-6 text-white" />
+        {/* Featured Certification */}
+        <div className="mb-12">
+          <Card className="bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-xl">
+            <CardContent className="p-8">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <div className="p-4 bg-white/20 rounded-lg mr-6">
+                    <Award className="text-white" size={32} />
                   </div>
-                  {cert.verificationUrl && (
-                    <a 
-                      href={cert.verificationUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-800 transition-colors"
-                    >
-                      <ExternalLink className="h-5 w-5" />
-                    </a>
-                  )}
-                </div>
-                <CardTitle className="text-lg text-gray-900 mb-2 leading-tight">
-                  {cert.name}
-                </CardTitle>
-                <div className="space-y-2">
-                  <Badge variant="outline" className="text-xs">
-                    <CheckCircle className="h-3 w-3 mr-1" />
-                    Verified
-                  </Badge>
-                  <div className="flex items-center text-gray-500 text-sm">
-                    <Calendar className="h-4 w-4 mr-2" />
-                    <span>{cert.date}</span>
+                  <div>
+                    <h3 className="text-2xl font-bold mb-2">
+                      Microsoft Certified: Azure Fundamentals
+                    </h3>
+                    <div className="flex items-center text-blue-100">
+                      <Calendar size={16} className="mr-2" />
+                      <span>2024 • Microsoft</span>
+                    </div>
+                    <Badge className="mt-2 bg-white/20 text-white hover:bg-white/30">
+                      AZ-900
+                    </Badge>
                   </div>
                 </div>
-              </CardHeader>
+                <div className="hidden md:block">
+                  <div className="text-right">
+                    <div className="text-3xl font-bold">LATEST</div>
+                    <div className="text-blue-100">Certification</div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
 
-              <CardContent className="pt-0">
-                <p className="text-sm font-medium text-blue-600 mb-2">{cert.issuer}</p>
-                {cert.credentialId && (
-                  <p className="text-xs text-gray-500 mb-3">
-                    Credential ID: {cert.credentialId}
-                  </p>
-                )}
-                <p className="text-sm text-gray-600 leading-relaxed">
-                  {cert.description}
-                </p>
-                {cert.verificationUrl && (
-                  <div className="mt-4 pt-3 border-t border-gray-100">
-                    <a 
-                      href={cert.verificationUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center text-sm text-blue-600 hover:text-blue-800 transition-colors"
-                    >
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      View Credential
-                    </a>
+        {/* Other Certifications Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {certifications.slice(1).map((cert) => (
+            <Card
+              key={cert.id}
+              className="shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer hover:transform hover:scale-105"
+              onClick={() => handleCertificationClick(cert)}
+            >
+              <CardContent className="p-6">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="p-3 bg-blue-100 rounded-lg">
+                    <Award className="text-blue-600" size={20} />
                   </div>
+                  <ExternalLink className="text-slate-400" size={16} />
+                </div>
+                
+                <h3 className="font-semibold text-slate-800 mb-3 line-clamp-2">
+                  {cert.name}
+                </h3>
+                
+                <div className="space-y-2 mb-4">
+                  <div className="flex items-center text-sm text-slate-600">
+                    <Calendar size={14} className="mr-2" />
+                    <span>{cert.year}</span>
+                  </div>
+                  <div className="text-sm text-blue-600 font-medium">
+                    {cert.issuer}
+                  </div>
+                </div>
+
+                {cert.credentialId && (
+                  <Badge variant="outline" className="text-xs">
+                    {cert.credentialId}
+                  </Badge>
                 )}
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Learning Stats */}
+        <div className="mt-16">
+          <Card className="bg-white shadow-lg">
+            <CardContent className="p-8">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-semibold text-slate-800 mb-2">
+                  Continuous Learning Journey
+                </h3>
+                <p className="text-slate-600">
+                  Committed to staying current with industry trends and technologies
+                </p>
+              </div>
+              <div className="grid md:grid-cols-3 gap-6 text-center">
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-blue-600 mb-2">
+                    {certifications.length}
+                  </div>
+                  <p className="text-slate-600 font-medium">Professional Certifications</p>
+                </div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-blue-600 mb-2">5</div>
+                  <p className="text-slate-600 font-medium">Years of Continuous Learning</p>
+                </div>
+                <div className="p-4">
+                  <div className="text-3xl font-bold text-blue-600 mb-2">100+</div>
+                  <p className="text-slate-600 font-medium">Hours of Training</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>
